@@ -18,11 +18,28 @@ async function showdata() {
     list.forEach(e => {
         cont.insertAdjacentHTML("beforeend",`
         <div class ="prod">
+        <h1 class="id">${e.id}</h1>
             <h1>${e.name}</h1>
             <p>${e.desc}</p>
-            <h3>${e.price}</h3>
+            <h3>$ ${e.price}</h3>
+            <button> Buy now </button>
         </div>
+        
             `)
     });
 }
+
+cont.addEventListener("click",(e)=>
+{
+    let card=e.target.closest(".prod"); 
+    let id=card.firstElementChild
+    console.log(id.textContent);
+    localStorage.setItem("active",JSON.stringify(id.textContent))
+    window.open("solo.html")
+
+
+})
+
+
+
 showdata()
